@@ -5,11 +5,18 @@ import HomeScreen from "./screens/Home.tsx";
 import {QueryClient, QueryClientProvider} from "react-query";
 import RulesScreen from "./screens/Rules.tsx";
 import PrivateRoute from "./utils/privateRoute.tsx";
+import LandingScreen from "./screens/Landing.tsx";
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './theme';
 
 
 const router = createBrowserRouter([
     {
         path: "/",
+        element: <LandingScreen />
+    },
+    {
+        path: "/home",
         element: (
             <PrivateRoute>
                 <HomeScreen />
@@ -30,7 +37,9 @@ export const queryClient = new QueryClient()
 const App = () => {
     return (
         <QueryClientProvider client={queryClient}>
-            <RouterProvider router={router}/>
+            <ThemeProvider theme={theme}>
+                <RouterProvider router={router}/>
+            </ThemeProvider>
         </QueryClientProvider>
     );
 }

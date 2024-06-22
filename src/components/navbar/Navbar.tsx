@@ -14,7 +14,7 @@ type PageType = {
 
 const pages: PageType[] = [{
     title: 'Snippets',
-    path: '/',
+    path: '/home',
     icon: <Code/>
 }, {
     title: 'Rules',
