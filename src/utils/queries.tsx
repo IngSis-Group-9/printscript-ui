@@ -9,8 +9,8 @@ import {RealSnippetOperations} from "./realSnippetOperations.tsx";
 
 const snippetOperations: SnippetOperations = RealSnippetOperations
 
-export const useGetSnippets = (page: number = 0, pageSize: number = 10, snippetName?: string) => {
-  return useQuery<PaginatedSnippets, Error>(['listSnippets', page,pageSize,snippetName], () => snippetOperations.listSnippetDescriptors(page, pageSize, snippetName));
+export const useGetSnippets = (page: number = 0, pageSize: number = 10, userId?: string, snippetName?: string) => {
+  return useQuery<PaginatedSnippets, Error>(['listSnippets', page,pageSize,userId,snippetName], () => snippetOperations.listSnippetDescriptors(page, pageSize, userId, snippetName));
 };
 
 export const useGetSnippetById = (id: string) => {
@@ -19,8 +19,8 @@ export const useGetSnippetById = (id: string) => {
   });
 };
 
-export const useCreateSnippet = ({onSuccess}: {onSuccess: () => void}): UseMutationResult<Snippet, Error, CreateSnippet> => {
-  return useMutation<Snippet, Error, CreateSnippet>(createSnippet => snippetOperations.createSnippet(createSnippet), {onSuccess});
+export const useCreateSnippet = ({onSuccess}: {onSuccess: () => void}, userId?: string): UseMutationResult<Snippet, Error, CreateSnippet> => {
+  return useMutation<Snippet, Error, CreateSnippet>(createSnippet => snippetOperations.createSnippet(createSnippet, userId), {onSuccess});
 };
 
 export const useUpdateSnippetById = ({onSuccess}: {onSuccess: () => void}): UseMutationResult<Snippet, Error, {
