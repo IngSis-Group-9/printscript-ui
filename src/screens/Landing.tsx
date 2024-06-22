@@ -55,13 +55,14 @@ const LandingScreen = () => {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        width: '80%',
+                        width: '90%',
                     }}>
                         <hr style={{
                             flexGrow: 1,
                             height: '1px',
                             backgroundColor: 'rgba(255,255,255,0.8)',
-                            margin: '0 10px'
+                            margin: '0 10px',
+                            border: 'none',
                         }}/>
                         <span style={{
                             color: 'rgba(255,255,255,0.9)',
@@ -71,7 +72,8 @@ const LandingScreen = () => {
                             flexGrow: 1,
                             height: '1px',
                             backgroundColor: 'rgba(255,255,255,0.8)',
-                            margin: '0 10px'
+                            margin: '0 10px',
+                            border: 'none',
                         }}/>
                     </div>
                     <RegisterButton/>

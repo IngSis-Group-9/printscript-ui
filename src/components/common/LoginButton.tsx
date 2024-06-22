@@ -7,16 +7,17 @@ const LoginButton = () => {
 
     return <Button
         onClick={() => loginWithRedirect()}
-        variant="contained"
+        variant="outlined"
+        color="secondary"
         sx={{
             width: "90%",
-            color: 'black',
+            color: 'white',
             display: 'flex',
             justifyContent: "center",
-            backgroundColor: 'white',
+            border: '1px solid',
             "&:hover": {
-                backgroundColor: theme.palette.primary.main,
-                color: 'white'
+                backgroundColor: theme.palette.secondary.main,
+                color: '#464646'
             }
         }}
     >
