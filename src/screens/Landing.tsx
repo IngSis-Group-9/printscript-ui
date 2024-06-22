@@ -2,6 +2,7 @@ import backgroundImage from '../assets/background-1.jpeg';
 import {Box} from "@mui/material";
 import LoginButton from "../components/common/LoginButton.tsx";
 import RegisterButton from "../components/common/RegisterButton.tsx";
+import Divider from "../components/common/Divider.tsx";
 
 const LandingScreen = () => {
 
@@ -51,31 +52,7 @@ const LandingScreen = () => {
                         }}
                     >𝙿𝚛𝚒𝚗𝚝𝚜𝚌𝚛𝚒𝚙𝚝</h1>
                     <LoginButton />
-                    <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '90%',
-                    }}>
-                        <hr style={{
-                            flexGrow: 1,
-                            height: '1px',
-                            backgroundColor: 'rgba(255,255,255,0.8)',
-                            margin: '0 10px',
-                            border: 'none',
-                        }}/>
-                        <span style={{
-                            color: 'rgba(255,255,255,0.9)',
-                            fontSize: '17px'
-                        }}>or</span>
-                        <hr style={{
-                            flexGrow: 1,
-                            height: '1px',
-                            backgroundColor: 'rgba(255,255,255,0.8)',
-                            margin: '0 10px',
-                            border: 'none',
-                        }}/>
-                    </div>
+                    <Divider text={"or"} />
                     <RegisterButton/>
                 </Box>
             </div>
