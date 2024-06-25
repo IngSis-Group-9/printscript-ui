@@ -8,12 +8,21 @@ import PrivateRoute from "./utils/privateRoute.tsx";
 import LandingScreen from "./screens/Landing.tsx";
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
+import RegisterScreen from "./screens/Register.tsx";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <LandingScreen />
+    },
+    {
+        path: "/register",
+        element: (
+            <PrivateRoute>
+                <RegisterScreen />
+            </PrivateRoute>
+        )
     },
     {
         path: "/home",
