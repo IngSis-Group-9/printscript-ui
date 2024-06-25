@@ -20,8 +20,10 @@ import "prismjs/themes/prism-okaidia.css";
 import {Save} from "@mui/icons-material";
 import {CreateSnippet, CreateSnippetWithLang} from "../../utils/snippet.ts";
 import {ModalWrapper} from "../common/ModalWrapper.tsx";
-import {useCreateSnippet, useGetFileTypes} from "../../utils/queries.tsx";
+import {useCreateSnippet} from "../../utils/queries.tsx";
 import {queryClient} from "../../App.tsx";
+import {FileType} from "../../types/FileType.ts";
+import {useAuth0} from "@auth0/auth0-react";
 
 export const AddSnippetModal = ({open, onClose, defaultSnippet}: {
     open: boolean,
@@ -31,17 +33,25 @@ export const AddSnippetModal = ({open, onClose, defaultSnippet}: {
     const [language, setLanguage] = useState(defaultSnippet?.language ?? "printscript");
     const [code, setCode] = useState(defaultSnippet?.content ?? "");
     const [snippetName, setSnippetName] = useState(defaultSnippet?.name ?? "")
+    const { user } = useAuth0();
     const {mutateAsync: createSnippet, isLoading: loadingSnippet} = useCreateSnippet({
         onSuccess: () => queryClient.invalidateQueries('listSnippets')
     })
-    const {data: fileTypes} = useGetFileTypes();
+    // const {data: fileTypes} = useGetFileTypes();
+    const fileTypes: FileType[] = [
+        {
+            language: "printscript",
+            extension: "prs"
+        }
+    ]
 
     const handleCreateSnippet = async () => {
         const newSnippet: CreateSnippet = {
             name: snippetName,
             content: code,
             language: language,
-            extension: fileTypes?.find((f) => f.language === language)?.extension ?? "prs"
+            extension: fileTypes?.find((f) => f.language === language)?.extension ?? "prs",
+            ownerId: user?.sub
         }
         await createSnippet(newSnippet);
         onClose();

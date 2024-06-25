@@ -13,6 +13,7 @@ export type CreateSnippet = {
   content: string;
   language: string;
   extension: string;
+  ownerId?: string;
 }
 
 export type CreateSnippetWithLang = CreateSnippet & { language: string }

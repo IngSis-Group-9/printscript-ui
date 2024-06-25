@@ -52,9 +52,9 @@ const LintingRulesList = () => {
   }
 
   return (
-    <Card style={{padding: 16, margin: 16}}>
+    <Card style={{padding: 16, margin: 16}} sx={{backgroundColor: 'rgb(0,0,0,0.6)', color: 'white'}}>
       <Typography variant={"h6"}>Linting rules</Typography>
-      <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+      <List sx={{ width: '100%', bgcolor: 'background.paper', backgroundColor: 'transparent', color: 'white' }}>
         {
           isLoading || isLoadingMutate ?  <Typography style={{height: 80}}>Loading...</Typography> :
           rules?.map((rule) => {

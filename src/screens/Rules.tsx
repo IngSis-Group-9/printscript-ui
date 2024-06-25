@@ -6,7 +6,7 @@ import FormattingRulesList from "../components/formatting-rules/FormattingRulesL
 const RulesScreen = () => {
     return (
         <Box display={"flex"} flexDirection={"column"}>
-            <Typography variant={"h3"}>
+            <Typography variant={"h3"} sx={{color: 'white', margin: '25px 0'}}>
                 Rules
             </Typography>
           <LintingRulesList />
