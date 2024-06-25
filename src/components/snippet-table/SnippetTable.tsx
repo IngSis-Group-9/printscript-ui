@@ -82,14 +82,14 @@ export const SnippetTable = (props: SnippetTableProps) => {
   return (
       <>
         <Box display="flex" flexDirection="row" justifyContent="space-between">
-          <Box sx={{background: 'white', width: '30%', display: 'flex'}}>
+          <Box sx={{background: 'transparent', width: '30%', display: 'flex', border: '2px solid white', borderRadius: '4px'}}>
             <InputBase
-                sx={{ml: 1, flex: 1}}
+                sx={{ml: 1, flex: 1, color: 'white'}}
                 placeholder="Search FileType"
                 inputProps={{'aria-label': 'search'}}
                 onChange={e => handleSearchSnippet(e.target.value)}
             />
-            <IconButton type="button" sx={{p: '10px'}} aria-label="search">
+            <IconButton type="button" sx={{p: '10px', color: 'white'}} aria-label="search">
               <Search/>
             </IconButton>
           </Box>
