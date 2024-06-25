@@ -47,11 +47,21 @@ const HomeScreen = () => {
 
   return (
       <>
-        <SnippetTable loading={isLoading} handleClickSnippet={setSnippetId} snippets={data?.snippets}
-                      handleSearchSnippet={handleSearchSnippet}/>
-        <Drawer open={!!snippetId} anchor={"right"} onClose={handleCloseModal}>
-          {snippetId && <SnippetDetail handleCloseModal={handleCloseModal} id={snippetId}/>}
-        </Drawer>
+          <div
+            style={{
+                height: '80vh',
+                overflowY: 'auto',
+                paddingRight: '16px',
+                paddingBottom: '16px',
+                marginTop: '32px',
+            }}
+          >
+              <SnippetTable loading={isLoading} handleClickSnippet={setSnippetId} snippets={data?.snippets}
+                            handleSearchSnippet={handleSearchSnippet}/>
+              <Drawer open={!!snippetId} anchor={"right"} onClose={handleCloseModal}>
+                  {snippetId && <SnippetDetail handleCloseModal={handleCloseModal} id={snippetId}/>}
+              </Drawer>
+          </div>
       </>
   )
 }

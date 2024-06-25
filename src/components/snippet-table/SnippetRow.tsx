@@ -37,11 +37,11 @@ const StyledTableRow = styled(TableRow)(({theme}) => ({
 
 export const SnippetRow = ({snippet, onClick, ...props}: { snippet: Snippet, onClick: () => void } & TableRowProps) => {
   return (
-      <StyledTableRow onClick={onClick} sx={{backgroundColor: 'white', border: 0, height: '75px'}} {...props}>
-        <StyledTableCell>{snippet.name}</StyledTableCell>
-        <StyledTableCell>{snippet.language}</StyledTableCell>
-        <StyledTableCell>{snippet.author}</StyledTableCell>
-        <StyledTableCell>{snippet.compliance}</StyledTableCell>
+      <StyledTableRow onClick={onClick} sx={{backgroundColor: 'transparent', border: '1px solid secondary.main', height: '75px'}} {...props}>
+        <StyledTableCell sx={{color: 'white'}}>{snippet.name}</StyledTableCell>
+        <StyledTableCell sx={{color: 'white'}}>{snippet.language}</StyledTableCell>
+        <StyledTableCell sx={{color: 'white'}}>{snippet.author}</StyledTableCell>
+        <StyledTableCell sx={{color: 'white'}}>{snippet.compliance}</StyledTableCell>
       </StyledTableRow>
   )
 }
@@ -50,7 +50,7 @@ export const LoadingSnippetRow = () => {
   return (
       <TableRow sx={{height: '75px', padding: 0}}>
         <StyledTableCell colSpan={4} sx={{
-          padding: 0
+          padding: 0,
         }}>
           <Skeleton height={"75px"} width={"100%"} variant={"rectangular"}/>
         </StyledTableCell>

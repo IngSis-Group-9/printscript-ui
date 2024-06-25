@@ -99,13 +99,15 @@ export const SnippetTable = (props: SnippetTableProps) => {
             Add Snippet
           </Button>
         </Box>
-        <Table size="medium" sx={{borderSpacing: "0 10px", borderCollapse: "separate"}}>
-          <TableHead>
+        <Table size="medium" sx={{borderSpacing: "0 0", borderCollapse: "separate", marginTop: '10px', backgroundColor: 'rgb(0,0,0,0.8)'}}>
+          <TableHead
+            sx={{backgroundColor: 'primary.main'}}
+          >
             <TableRow sx={{fontWeight: 'bold'}}>
-              <StyledTableCell sx={{fontWeight: "bold"}}>Name</StyledTableCell>
-              <StyledTableCell sx={{fontWeight: "bold"}}>Language</StyledTableCell>
-              <StyledTableCell sx={{fontWeight: "bold"}}>Author</StyledTableCell>
-              <StyledTableCell sx={{fontWeight: "bold"}}>Conformance</StyledTableCell>
+              <StyledTableCell sx={{fontWeight: "bold", color: 'white'}}>Name</StyledTableCell>
+              <StyledTableCell sx={{fontWeight: "bold", color: 'white'}}>Language</StyledTableCell>
+              <StyledTableCell sx={{fontWeight: "bold", color: 'white'}}>Author</StyledTableCell>
+              <StyledTableCell sx={{fontWeight: "bold", color: 'white'}}>Conformance</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>{
@@ -129,7 +131,9 @@ export const SnippetTable = (props: SnippetTableProps) => {
           </TableBody>
           <TablePagination count={count} page={page} rowsPerPage={pageSize}
                            onPageChange={(_, page) => handleGoToPage(page)}
-                           onRowsPerPageChange={e => handleChangePageSize(Number(e.target.value))}/>
+                           onRowsPerPageChange={e => handleChangePageSize(Number(e.target.value))}
+                           sx={{color: 'white', backgroundColor: 'primary.main', border: 'none'}}
+          />
         </Table>
         <AddSnippetModal defaultSnippet={snippet} open={addModalOpened}
                          onClose={() => setAddModalOpened(false)}/>
