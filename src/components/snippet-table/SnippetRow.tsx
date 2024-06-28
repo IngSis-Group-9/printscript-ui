@@ -41,6 +41,7 @@ export const SnippetRow = ({snippet, onClick, ...props}: { snippet: Snippet, onC
         <StyledTableCell sx={{color: 'white'}}>{snippet.name}</StyledTableCell>
         <StyledTableCell sx={{color: 'white'}}>{snippet.language}</StyledTableCell>
         <StyledTableCell sx={{color: 'white'}}>{snippet.author}</StyledTableCell>
+        {/*<StyledTableCell sx={{color: 'white'}}>{snippet.owner.name}</StyledTableCell>*/}
         <StyledTableCell sx={{color: 'white'}}>{snippet.compliance}</StyledTableCell>
       </StyledTableRow>
   )

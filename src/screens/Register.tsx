@@ -26,11 +26,6 @@ const RegisterScreen = () => {
                         });
                     }
                 }
-                // await axios.post(`${SNIPPET_MANAGER_API_URL}/user/register`, {
-                //     id: user.sub,
-                //     name: user.name,
-                //     email: user.email
-                // });
             }
         };
 

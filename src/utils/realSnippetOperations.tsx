@@ -45,9 +45,16 @@ export const RealSnippetOperations: SnippetOperations = {
         return response.data;
     },
 
-    async getUserFriends(name?: string, page?: number, pageSize?: number): Promise<PaginatedUsers> {
-        const response = await axios.get(`${SNIPPET_MANAGER_API_URL}/users`, { params: { name, page, pageSize } });
-        return response.data;
+    async getUserFriends(name?: string, page?: number, pageSize?: number, userId?: string): Promise<PaginatedUsers> {
+        // ver como usar el page y el pageSize
+        const response = await axios.get(`${SNIPPET_MANAGER_API_URL}/user/friends`, { params: { name, page, pageSize, userId } });
+        const aux: PaginatedUsers = {
+            page: page!,
+            page_size: pageSize!,
+            count: 20,
+            users: response.data,
+        }
+        return aux;
     },
 
     async shareSnippet(snippetId: string, userId: string): Promise<Snippet> {

@@ -3,6 +3,7 @@ import {ModalWrapper} from "../common/ModalWrapper.tsx";
 import {useGetUsers} from "../../utils/queries.tsx";
 import {useEffect, useState} from "react";
 import {User} from "../../utils/users.ts";
+import {useAuth0} from "@auth0/auth0-react";
 
 type ShareSnippetModalProps = {
   open: boolean
@@ -14,7 +15,8 @@ export const ShareSnippetModal = (props: ShareSnippetModalProps) => {
   const {open, onClose, onShare, loading} = props
   const [name, setName] = useState("")
   const [debouncedName, setDebouncedName] = useState("")
-  const {data, isLoading} = useGetUsers(debouncedName, 1, 5)
+  const { user } = useAuth0();
+  const {data, isLoading} = useGetUsers(debouncedName, 1, 5, user?.sub)
   const [selectedUser, setSelectedUser] = useState<User | undefined>()
 
   useEffect(() => {
