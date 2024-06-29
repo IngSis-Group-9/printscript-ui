@@ -19,8 +19,8 @@ export const useGetSnippetById = (id: string) => {
   });
 };
 
-export const useCreateSnippet = ({onSuccess}: {onSuccess: () => void}, userId?: string): UseMutationResult<Snippet, Error, CreateSnippet> => {
-  return useMutation<Snippet, Error, CreateSnippet>(createSnippet => snippetOperations.createSnippet(createSnippet, userId), {onSuccess});
+export const useCreateSnippet = ({onSuccess}: {onSuccess: () => void}): UseMutationResult<Snippet, Error, CreateSnippet> => {
+  return useMutation<Snippet, Error, CreateSnippet>(createSnippet => snippetOperations.createSnippet(createSnippet), {onSuccess});
 };
 
 export const useUpdateSnippetById = ({onSuccess}: {onSuccess: () => void}): UseMutationResult<Snippet, Error, {
@@ -34,8 +34,8 @@ export const useUpdateSnippetById = ({onSuccess}: {onSuccess: () => void}): UseM
   );
 };
 
-export const useGetUsers = (name: string = "", page: number = 0, pageSize: number = 10) => {
-  return useQuery<PaginatedUsers, Error>(['users',name,page,pageSize], () => snippetOperations.getUserFriends(name,page, pageSize));
+export const useGetUsers = (name: string = "", page: number = 0, pageSize: number = 10, userId?: string) => {
+  return useQuery<PaginatedUsers, Error>(['users',name,page,pageSize,userId], () => snippetOperations.getUserFriends(name,page, pageSize, userId));
 };
 
 export const useShareSnippet = () => {
