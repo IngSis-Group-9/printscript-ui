@@ -18,9 +18,9 @@ const SNIPPET_MANAGER_API_URL = 'http://localhost:8083';
 
 export const RealSnippetOperations: SnippetOperations = {
 
-    async listSnippetDescriptors(page: number, pageSize: number, userId: string, sippetName?: string): Promise<PaginatedSnippets> {
+    async listSnippetDescriptors(page: number, pageSize: number, userId: string, snippetName: string): Promise<PaginatedSnippets> {
         // ver como usar el page y el pageSize
-        const response = await axios.get(`${SNIPPET_MANAGER_API_URL}/snippets/getAll`, { params: { page, pageSize, userId, sippetName } });
+        const response = await axios.get(`${SNIPPET_MANAGER_API_URL}/snippets/getAll`, { params: { page, pageSize, userId, snippetName } });
         const aux: PaginatedSnippets = {
             page: page,
             page_size: pageSize,
