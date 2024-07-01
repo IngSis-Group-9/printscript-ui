@@ -2,7 +2,7 @@
 
 export function loginViaAuth0Ui(username: string, password: string) {
   // App landing page redirects to Auth0.
-  cy.visit('/')
+  cy.visit('/home')
 
   // Login on Auth0.
   cy.origin(
@@ -16,7 +16,7 @@ export function loginViaAuth0Ui(username: string, password: string) {
   )
 
   // Ensure Auth0 has redirected us back to the RWA.
-  cy.url().should('equal', 'http://localhost:3000/')
+  cy.url().should('equal', 'http://localhost:5173/home')
 }
 
 

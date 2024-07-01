@@ -12,4 +12,7 @@ export default defineConfig({
     experimentalStudio: true,
     baseUrl: FRONTEND_URL,
   },
+  env: {
+    auth0_domain: 'dev-n5rdb5xcsb4ya1cg.us.auth0.com',
+  },
 });
