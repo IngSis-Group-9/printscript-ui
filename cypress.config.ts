@@ -1,6 +1,5 @@
 import { defineConfig } from "cypress";
 import dotenv from 'dotenv'
-import {FRONTEND_URL} from "./src/utils/constants";
 dotenv.config()
 
 export default defineConfig({
@@ -10,7 +9,7 @@ export default defineConfig({
       return config
     },
     experimentalStudio: true,
-    baseUrl: FRONTEND_URL,
+    baseUrl: 'http://localhost:5173',
   },
   env: {
     auth0_domain: 'dev-n5rdb5xcsb4ya1cg.us.auth0.com',
