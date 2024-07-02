@@ -20,9 +20,9 @@ import "prismjs/themes/prism-okaidia.css";
 import {Save} from "@mui/icons-material";
 import {CreateSnippet, CreateSnippetWithLang} from "../../utils/snippet.ts";
 import {ModalWrapper} from "../common/ModalWrapper.tsx";
-import {useCreateSnippet} from "../../utils/queries.tsx";
+import {useCreateSnippet, useGetFileTypes} from "../../utils/queries.tsx";
 import {queryClient} from "../../App.tsx";
-import {FileType} from "../../types/FileType.ts";
+// import {FileType} from "../../types/FileType.ts";
 import {useAuth0} from "@auth0/auth0-react";
 
 export const AddSnippetModal = ({open, onClose, defaultSnippet}: {
@@ -37,13 +37,13 @@ export const AddSnippetModal = ({open, onClose, defaultSnippet}: {
     const {mutateAsync: createSnippet, isLoading: loadingSnippet} = useCreateSnippet({
         onSuccess: () => queryClient.invalidateQueries('listSnippets')
     })
-    // const {data: fileTypes} = useGetFileTypes();
-    const fileTypes: FileType[] = [
-        {
-            language: "printscript",
-            extension: "prs"
-        }
-    ]
+    const {data: fileTypes} = useGetFileTypes();
+    // const fileTypes: FileType[] = [
+    //     {
+    //         language: "printscript",
+    //         extension: "prs"
+    //     }
+    // ]
 
     const handleCreateSnippet = async () => {
         const newSnippet: CreateSnippet = {
