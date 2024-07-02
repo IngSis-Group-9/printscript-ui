@@ -23,11 +23,6 @@ export type UpdateSnippet = {
 
 export type Snippet = CreateSnippet & {
   id: string
-  owner: {
-    id: string;
-    name: string;
-    email: string;
-  }
 } & SnippetStatus
 
 type SnippetStatus = {
