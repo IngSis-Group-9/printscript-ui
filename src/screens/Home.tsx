@@ -15,8 +15,8 @@ const HomeScreen = () => {
   const [snippetName, setSnippetName] = useState('');
   const [snippetId, setSnippetId] = useState<string | null>(null)
   const {page, page_size, count, handleChangeCount} = usePaginationContext()
-  const { user, getAccessTokenSilently } = useAuth0();
-  const {data, isLoading} = useGetSnippets(page, page_size, user?.sub, snippetName)
+  const { getAccessTokenSilently } = useAuth0();
+  const {data, isLoading} = useGetSnippets(page, page_size, snippetName)
 
     useEffect(() => {
         const getAccessToken = async () => {

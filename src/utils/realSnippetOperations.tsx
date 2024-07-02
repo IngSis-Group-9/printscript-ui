@@ -24,10 +24,10 @@ axiosInstance.interceptors.request.use((config) => {
 
 export const RealSnippetOperations: SnippetOperations = {
 
-    async listSnippetDescriptors(page: number, pageSize: number, userId: string, snippetName: string): Promise<PaginatedSnippets> {
+    async listSnippetDescriptors(page: number, pageSize: number, snippetName: string): Promise<PaginatedSnippets> {
         // ver como usar el page y el pageSize
         const response = await axiosInstance.get(`${SNIPPET_MANAGER_API_URL}/snippets/getAll`, {
-            params: { page, pageSize, userId, snippetName }
+            params: { page, pageSize, snippetName }
         });
         const aux: PaginatedSnippets = {
             page: page,
@@ -122,7 +122,7 @@ export const RealSnippetOperations: SnippetOperations = {
 
     // Get supported languages
     async getFileTypes(): Promise<FileType[]> {
-        const response = await axios.get(`${CODE_PROCESSING_API_URL}/fileTypes/getTypes`);
+        const response = await axiosInstance.get(`${CODE_PROCESSING_API_URL}/fileTypes/getTypes`);
         return response.data;
     }
 }
