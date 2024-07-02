@@ -14,6 +14,7 @@ createRoot(document.getElementById('root')!).render(
                 domain="dev-n5rdb5xcsb4ya1cg.us.auth0.com"
                 clientId="lCrzgtui3ckfodVyLn2ELx54bsSbIgs4"
                 authorizationParams={{
+                    audience: 'https://ingisis-group-9/',
                     redirect_uri: window.location.origin + '/register'
                 }}
             >
