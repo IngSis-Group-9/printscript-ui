@@ -100,8 +100,16 @@ export const RealSnippetOperations: SnippetOperations = {
         return response.data;
     },
 
-    async postTestCase(testCase: Partial<TestCase>): Promise<TestCase> {
-        const response = await axiosInstance.post(`${SNIPPET_MANAGER_API_URL}/testCases`, testCase);
+    async postTestCase(testCase: Partial<TestCase>, snippetId: string): Promise<TestCase> {
+        const response = await axiosInstance.post(`${SNIPPET_MANAGER_API_URL}/testCases/create`,
+     {
+            name: testCase.name,
+            input: testCase.input,
+            output: testCase.output,
+            envVars: testCase.envVars,
+            snippetId: snippetId
+          }
+        );
         return response.data;
     },
 
