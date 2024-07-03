@@ -15,8 +15,21 @@ const HomeScreen = () => {
   const [snippetName, setSnippetName] = useState('');
   const [snippetId, setSnippetId] = useState<string | null>(null)
   const {page, page_size, count, handleChangeCount} = usePaginationContext()
-  const { user } = useAuth0();
-  const {data, isLoading} = useGetSnippets(page, page_size, user?.sub, snippetName)
+  const { getAccessTokenSilently } = useAuth0();
+  const {data, isLoading} = useGetSnippets(page, page_size, snippetName)
+
+    useEffect(() => {
+        const getAccessToken = async () => {
+            try {
+                const accessToken = await getAccessTokenSilently();
+                localStorage.setItem('authAccessToken', accessToken);
+            } catch (e) {
+                console.error(e);
+            }
+        };
+
+        getAccessToken();
+    }, [getAccessTokenSilently]);
 
   useEffect(() => {
     if (data?.count && data.count != count) {

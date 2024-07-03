@@ -4,9 +4,14 @@ import {Button} from "@mui/material";
 const LogoutButton = () => {
     const { logout } = useAuth0();
 
+    const handleLogout = () => {
+        logout({ logoutParams: { returnTo: window.location.origin } });
+        localStorage.removeItem('authAccessToken'); // remove authAccessToken from localStorage
+    };
+
     return (
         <Button
-            onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
+            onClick={handleLogout}
             sx={{
                 my: 2,
                 paddingLeft: 2,

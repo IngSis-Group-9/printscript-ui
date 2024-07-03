@@ -13,7 +13,6 @@ export type CreateSnippet = {
   content: string;
   language: string;
   extension: string;
-  ownerId?: string;
 }
 
 export type CreateSnippetWithLang = CreateSnippet & { language: string }
@@ -24,11 +23,6 @@ export type UpdateSnippet = {
 
 export type Snippet = CreateSnippet & {
   id: string
-  owner: {
-    id: string;
-    name: string;
-    email: string;
-  }
 } & SnippetStatus
 
 type SnippetStatus = {

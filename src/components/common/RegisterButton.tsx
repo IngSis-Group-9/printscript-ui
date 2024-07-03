@@ -6,7 +6,13 @@ const RegisterButton = () => {
     const { loginWithRedirect } = useAuth0();
 
     return <Button
-        onClick={() => loginWithRedirect()}
+        onClick={() =>
+            loginWithRedirect({
+                authorizationParams: {
+                    screen_hint: "signup"
+                }
+            })
+        }
         variant="outlined"
         color="secondary"
         sx={{
