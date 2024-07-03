@@ -90,8 +90,8 @@ export const RealSnippetOperations: SnippetOperations = {
         return response.data;
     },
 
-    async getTestCases(): Promise<TestCase[]> {
-        const response = await axiosInstance.get(`${SNIPPET_MANAGER_API_URL}/testCases`);
+    async getTestCases(snippetId: string): Promise<TestCase[]> {
+        const response = await axiosInstance.get(`${SNIPPET_MANAGER_API_URL}/testCases`, { params: { snippetId } });
         return response.data;
     },
 
