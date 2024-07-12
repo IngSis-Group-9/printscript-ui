@@ -90,9 +90,17 @@ export const RealSnippetOperations: SnippetOperations = {
         return response.data;
     },
 
-    async getTestCases(): Promise<TestCase[]> {
-        const response = await axiosInstance.get(`${SNIPPET_MANAGER_API_URL}/testCases`);
-        return response.data;
+    async getTestCases(snippetId: string): Promise<TestCase[]> {
+        const response = await axiosInstance.get(`${SNIPPET_MANAGER_API_URL}/testCases`, { params: { snippetId } });
+        return response.data.map((testCase: TestCase) => {
+            return {
+                id: testCase.id,
+                name: testCase.name,
+                input: testCase.input,
+                output: testCase.output,
+                envVars: testCase.envVars
+            }
+        })
     },
 
     async formatSnippet(snippet: string): Promise<string> {
@@ -100,8 +108,16 @@ export const RealSnippetOperations: SnippetOperations = {
         return response.data;
     },
 
-    async postTestCase(testCase: Partial<TestCase>): Promise<TestCase> {
-        const response = await axiosInstance.post(`${SNIPPET_MANAGER_API_URL}/testCases`, testCase);
+    async postTestCase(testCase: Partial<TestCase>, snippetId: string): Promise<TestCase> {
+        const response = await axiosInstance.post(`${SNIPPET_MANAGER_API_URL}/testCases/create`,
+     {
+            name: testCase.name,
+            input: testCase.input,
+            output: testCase.output,
+            envVars: testCase.envVars,
+            snippetId: snippetId
+          }
+        );
         return response.data;
     },
 
