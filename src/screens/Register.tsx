@@ -12,7 +12,12 @@ const RegisterScreen = () => {
     useEffect(() => {
         const checkAndRegisterUser = async () => {
             if (user) {
-                const token = localStorage.getItem('authAccessToken');
+                let token = localStorage.getItem('authAccessToken');
+                // Wait until token is available
+                while (!token) {
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    token = localStorage.getItem('authAccessToken');
+                }
                 try {
                     // Check if user is already registered in backend
                     await axios.get(`${SNIPPET_MANAGER_API_URL}/user/${user.sub}`, {
