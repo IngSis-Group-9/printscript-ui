@@ -34,3 +34,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           tags: |
             ghcr.io/ingsis-group-9/printscript-ui-dev:${{ steps.short-sha.outputs.sha }}
+            ghcr.io/ingsis-group-9/printscript-ui-dev:latest
