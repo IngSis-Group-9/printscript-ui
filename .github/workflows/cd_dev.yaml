@@ -43,7 +43,7 @@ jobs:
           username: "azureuser"
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd snippet-infra
+            cd ~/projects/infra
             docker-compose stop printscript-ui
             docker-compose pull printscript-ui
             docker-compose up printscript-ui -d --build
