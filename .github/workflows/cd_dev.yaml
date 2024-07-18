@@ -35,3 +35,15 @@ jobs:
           tags: |
             ghcr.io/ingsis-group-9/printscript-ui-dev:${{ steps.short-sha.outputs.sha }}
             ghcr.io/ingsis-group-9/printscript-ui-dev:latest
+
+      - name: Update Service
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VM_HOST_DEV }}
+          username: "azureuser"
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd snippet-infra
+            docker-compose stop printscript-ui
+            docker-compose pull printscript-ui
+            docker-compose up printscript-ui -d --build
