@@ -44,6 +44,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd ~/projects/infra
-            docker-compose -f docker-compose.prod.yml stop printscript-ui
-            docker-compose -f docker-compose.prod.yml pull printscript-ui
-            docker-compose -f docker-compose.prod.yml up printscript-ui -d --build
+            docker-compose -f docker-compose.dev.yml stop printscript-ui
+            docker-compose -f docker-compose.dev.yml pull printscript-ui
+            docker-compose -f docker-compose.dev.yml up printscript-ui -d --build
