@@ -8,7 +8,7 @@ import {PaginatedUsers} from "./users.ts";
 import {Rule} from "../types/Rule.ts";
 
 const CODE_PROCESSING_API_URL = 'http://localhost:8081';
-const SNIPPET_MANAGER_API_URL = 'http://localhost:8083';
+const SNIPPET_MANAGER_API_URL = 'http://localhost:8083/snippet-manager';
 
 const axiosInstance = axios.create();
 
@@ -131,7 +131,7 @@ export const RealSnippetOperations: SnippetOperations = {
         return response.data;
     },
 
-    async testSnippet(testCase: Partial<TestCase>): Promise<TestCaseResult> {
+    async testSnippet(testCase: Partial<TestCase>): Promise<TestCaseResult> { // me va a llegar un boolean como response, lo tengo que mapear a TestCaseResult
         const response = await axiosInstance.post(`${CODE_PROCESSING_API_URL}/testSnippet`, testCase);
         return response.data;
     },
