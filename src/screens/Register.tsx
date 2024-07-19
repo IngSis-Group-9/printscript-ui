@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios, {AxiosError} from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const SNIPPET_MANAGER_API_URL = 'http://localhost:8083';
+const SNIPPET_MANAGER_API_URL = 'https://nueve-de-diciembre-dev.duckdns.org';
 
 const RegisterScreen = () => {
     const { user, isAuthenticated } = useAuth0();
