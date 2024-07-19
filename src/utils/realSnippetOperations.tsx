@@ -8,7 +8,7 @@ import {PaginatedUsers} from "./users.ts";
 import {Rule} from "../types/Rule.ts";
 
 const CODE_PROCESSING_API_URL = 'http://localhost:8081';
-const SNIPPET_MANAGER_API_URL = 'http://localhost:8083/snippet-manager';
+const SNIPPET_MANAGER_API_URL = 'https://nueve-de-diciembre-dev.duckdns.org/snippet-manager';
 
 const axiosInstance = axios.create();
 
