@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - dev
+      - master
 
 jobs:
   push_to_registry:
@@ -33,17 +33,17 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            ghcr.io/ingsis-group-9/printscript-ui-dev:${{ steps.short-sha.outputs.sha }}
-            ghcr.io/ingsis-group-9/printscript-ui-dev:latest
+            ghcr.io/ingsis-group-9/printscript-ui-prod:${{ steps.short-sha.outputs.sha }}
+            ghcr.io/ingsis-group-9/printscript-ui-prod:latest
 
       - name: Update Service
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.VM_HOST_DEV }}
+          host: ${{ secrets.VM_HOST_PROD }}
           username: "azureuser"
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.SSH_KEY_PROD }}
           script: |
             cd ~/projects/infra
-            docker-compose -f docker-compose.dev.yml stop printscript-ui
-            docker-compose -f docker-compose.dev.yml pull printscript-ui
-            docker-compose -f docker-compose.dev.yml up printscript-ui -d --build
+            docker-compose -f docker-compose.prod.yml stop printscript-ui
+            docker-compose -f docker-compose.prod.yml pull printscript-ui
+            docker-compose -f docker-compose.prod.yml up printscript-ui -d --build
