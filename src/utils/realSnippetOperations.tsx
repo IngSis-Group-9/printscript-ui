@@ -7,7 +7,7 @@ import axios from 'axios';
 import {PaginatedUsers} from "./users.ts";
 import {Rule} from "../types/Rule.ts";
 
-const SNIPPET_MANAGER_API_URL = 'https://nueve-de-diciembre-dev.duckdns.org';
+const SNIPPET_MANAGER_API_URL = 'https://nueve-de-diciembre.duckdns.org';
 
 const axiosInstance = axios.create();
 

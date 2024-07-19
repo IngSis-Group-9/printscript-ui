@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios, {AxiosError} from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const SNIPPET_MANAGER_API_URL = 'https://nueve-de-diciembre-dev.duckdns.org';
+const SNIPPET_MANAGER_API_URL = 'https://nueve-de-diciembre.duckdns.org';
 
 const RegisterScreen = () => {
     const { user, isAuthenticated } = useAuth0();
@@ -23,7 +23,7 @@ const RegisterScreen = () => {
                     await axios.get(`${SNIPPET_MANAGER_API_URL}/snippet-manager/user/${user.sub}`, {
                         headers: { 'Authorization': 'Bearer ' + token }
                     });
-                    await axios.get(`https://nueve-de-diciembre-dev.duckdns.org/snippet-manager/snippets/test`, {
+                    await axios.get(`https://nueve-de-diciembre.duckdns.org/snippet-manager/snippets/test`, {
                         headers: { 'Authorization': 'Bearer ' + token }
                     });
                 } catch (error) {
