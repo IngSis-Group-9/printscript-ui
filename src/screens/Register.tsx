@@ -20,14 +20,17 @@ const RegisterScreen = () => {
                 }
                 try {
                     // Check if user is already registered in backend
-                    await axios.get(`${SNIPPET_MANAGER_API_URL}/user/${user.sub}`, {
+                    await axios.get(`${SNIPPET_MANAGER_API_URL}/snippet-manager/user/${user.sub}`, {
+                        headers: { 'Authorization': 'Bearer ' + token }
+                    });
+                    await axios.get(`https://nueve-de-diciembre-dev.duckdns.org/snippet-manager/snippets/test`, {
                         headers: { 'Authorization': 'Bearer ' + token }
                     });
                 } catch (error) {
                     // If user is not registered, register them
                     const axiosError = error as AxiosError;
                     if (axiosError.response && axiosError.response.status === 404) {
-                        await axios.post(`${SNIPPET_MANAGER_API_URL}/user/register`, null,
+                        await axios.post(`${SNIPPET_MANAGER_API_URL}/snippet-manager/user/register`, null,
                         {
                             headers: { 'Authorization': 'Bearer ' + token }
                         });
